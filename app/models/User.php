@@ -17,6 +17,14 @@ class User {
       $this->accessLogModel = new AccessLog();
     }
 
+    public function getNumberOfUsers() {
+      $db = db_connect();
+      $statement = $db->prepare("select count(*) as count from users;");
+      $statement->execute();
+      $rows = $statement->fetch(PDO::FETCH_ASSOC);
+      return $rows['count'];
+    }
+
     public function test () {
       $db = db_connect();
       $statement = $db->prepare("select * from users;");

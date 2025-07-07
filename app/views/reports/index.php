@@ -8,7 +8,9 @@
       <div class="card text-white bg-primary mb-3">
         <div class="card-body">
           <h5 class="card-title">Total Registered Users</h5>
-          <p class="card-text display-6">45</p>
+          <?php if (!empty($data["total_users"])): ?>
+            <p class="card-text display-6"><?php echo $data["total_users"]; ?></p>
+          <?php endif; ?>
         </div>
       </div>
     </div>
