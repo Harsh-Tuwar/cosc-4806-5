@@ -14,10 +14,17 @@ class Reminder {
 
   public function getTotalNumberOfReminders() {
     $db = db_connect();
-    $query = $db->prepare("SELECT count(*) as count FROM reminders where deleted = 0;");
+    $query = $db->prepare("
+       SELECT 
+          COUNT(*) AS all_reminders,
+          COUNT(CASE WHEN completed = 1 THEN 1 END) AS completed_reminders,
+          COUNT(CASE WHEN completed = 0 THEN 1 END) AS incomplete_reminders
+        FROM reminders
+        WHERE deleted = 0
+    ");
     $query->execute();
-    $rows = $query->fetch(PDO::FETCH_ASSOC);
-    return $rows['count'];
+    $rows = $query->fetch(PDO::FETCH_ASSOC);    
+    return $rows;
   }
 
   public function updateReminder($reminderId, $subject, $completed)  {

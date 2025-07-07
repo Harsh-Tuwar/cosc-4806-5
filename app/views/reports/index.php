@@ -5,29 +5,41 @@
 
   <div class="row mb-4">
     <div class="col-md-6">
-      <div class="card mb-3 border-success" style="padding-bottom: 15px;">
-        <div class="card-header bg-success text-white">
-          <h5 class="mb-0">Total Reminders</h5>
-        </div>
-        <div class="card-body">
-          <p class="display-6">123</p>
-          <div class="row text-center">
-            <div class="col-md-6">
-              <div class="p-3 border rounded bg-light">
-                <h6 class="text-success">Completed</h6>
-                <p class="fw-bold mb-0">87</p>
-              </div>
+          <div class="card mb-3 border-success">
+            <div class="card-header bg-success text-white">
+              <h5 class="mb-0">Total Reminders</h5>
             </div>
-            <div class="col-md-6 center">
-              <div class="p-3 border rounded bg-light">
-                <h6 class="text-danger">Incomplete</h6>
-                <p class="fw-bold mb-0">36</p>
+            <div class="card-body">
+              <?php if (!empty($data['total_reminders']["all_reminders"])): ?>
+      <p class="display-6"><?php echo $data['total_reminders']["all_reminders"]; ?></p>
+    <?php else: ?>
+      <p class="display-6">Unknown</p>
+    <?php endif; ?>
+              <div class="row text-center">
+                <div class="col-md-6">
+                  <div class="p-3 border rounded bg-light">
+                    <h6 class="text-success">Completed</h6>
+                    <?php if (!empty($data['total_reminders']['completed_reminders'])): ?>
+      <p class="fw-bold mb-0"><?php echo $data['total_reminders']['completed_reminders']; ?></p>
+    <?php else: ?>
+      <p class="fw-bold mb-0">0</p>
+    <?php endif; ?>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="p-3 border rounded bg-light">
+                    <h6 class="text-danger">Incomplete</h6>
+                    <?php if (!empty($data['total_reminders']['incomplete_reminders'])): ?>
+      <p class="fw-bold mb-0"><?php echo $data['total_reminders']['incomplete_reminders']; ?></p>
+    <?php else: ?>
+      <p class="fw-bold mb-0">0</p>
+    <?php endif; ?>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
     <div class="col-md-6">
       <div class="card text-white bg-primary mb-2">
