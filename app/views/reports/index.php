@@ -1,85 +1,60 @@
 <?php require_once 'app/views/templates/header.php' ?>
 
 <div class="container mt-5">
-  <div class="page-header mb-4">
-    <h1>Admin Reports</h1>
-  </div>
+  <h1 class="mb-4">Reports Overview</h1>
 
-  <!-- View All Reminders -->
-  <div class="card mb-4">
-    <div class="card-header">
-      <h5>All Reminders</h5>
+  <div class="row mb-4">
+    <div class="col-md-4">
+      <div class="card text-white bg-primary mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Total Registered Users</h5>
+          <p class="card-text display-6">45</p>
+        </div>
+      </div>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Reminder 1: Meeting at 10 AM</li>
-      <li class="list-group-item">Reminder 2: Submit report by EOD</li>
-      <li class="list-group-item">Reminder 3: Team lunch on Friday</li>
-    </ul>
-  </div>
-
-  <!-- Most Reminders by User -->
-  <div class="card mb-4">
-    <div class="card-body">
-      <h5 class="card-title">User With the Most Reminders</h5>
-      <p class="card-text"><strong>JohnDoe</strong> with <strong>12 reminders</strong></p>
+    <div class="col-md-4">
+      <div class="card text-white bg-success mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Total Reminders</h5>
+          <p class="card-text display-6">123</p>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <!-- Total Logins Table -->
-  <div class="card mb-4">
-    <div class="card-body">
-      <h5 class="card-title">Total Logins by Username</h5>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Total Logins</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>JohnDoe</td><td>34</td></tr>
-          <tr><td>JaneSmith</td><td>28</td></tr>
-          <tr><td>Admin</td><td>45</td></tr>
-        </tbody>
-      </table>
+    <div class="col-md-4">
+      <div class="card text-white bg-dark mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Total Logs</h5>
+          <p class="card-text display-6">678</p>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Bonus Chart -->
-  <div class="card mb-5">
-    <div class="card-body">
-      <h5 class="card-title">Login Frequency Chart</h5>
-      <canvas id="loginChart" height="100"></canvas>
+  <div class="row mb-5">
+    <div class="col-md-12">
+      <div class="card border-info">
+        <div class="card-body">
+          <h5 class="card-title">Login Summary</h5>
+          <p class="card-text">
+            <strong>Most Failed Logins:</strong> jane.doe@example.com (15 failed attempts)<br>
+            <strong>Most Successful Logins:</strong> admin@example.com (87 successful logins)
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <a href="/users" class="btn btn-outline-primary w-100">Go to Users Table</a>
+    </div>
+    <div class="col-md-4">
+      <a href="/reminders" class="btn btn-outline-success w-100">View All Reminders</a>
+    </div>
+    <div class="col-md-4">
+      <a href="/logs" class="btn btn-outline-secondary w-100">View All Logs</a>
     </div>
   </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-  const ctx = document.getElementById('loginChart').getContext('2d');
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['JohnDoe', 'JaneSmith', 'Admin'],
-      datasets: [{
-        label: 'Total Logins',
-        data: [34, 28, 45],
-        backgroundColor: 'rgba(54, 162, 235, 0.6)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-          ticks: {
-            stepSize: 5
-          }
-        }
-      }
-    }
-  });
-</script>
 
 <?php require_once 'app/views/templates/footer.php' ?>
