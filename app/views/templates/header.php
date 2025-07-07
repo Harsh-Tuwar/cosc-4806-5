@@ -54,6 +54,11 @@ if (!isset($_SESSION['auth'])) {
           <li class="nav-item">
             <a class="nav-link<?= str_contains($_SERVER['REQUEST_URI'], 'reminders') ? ' active' : '' ?>" href="/reminders">Reminders</a>
           </li>
+          <?php if (isset($_SESSION['admin'])): ?>
+            <li class="nav-item">
+              <a class="nav-link<?= $_SERVER['REQUEST_URI'] === '/reports' ? ' active' : '' ?>" href="/reports">Reports</a>
+            </li
+          <?php endif; ?>
         </ul>
 
         <ul class="navbar-nav">
