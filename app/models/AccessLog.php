@@ -4,6 +4,14 @@
       
     }
 
+    public function getTotalNumberOfLogs() {
+      $db = db_connect();
+      $query = $db->prepare("SELECT count(*) as count FROM access_logs;");
+      $query->execute();
+      $rows = $query->fetch(PDO::FETCH_ASSOC);
+      return $rows['count'];
+    }
+    
     public function logAccess($username, $success) {
       $db = db_connect();
       $serverTimestamp = date('Y-m-d H:i:s');

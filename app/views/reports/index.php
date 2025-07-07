@@ -1,32 +1,53 @@
 <?php require_once 'app/views/templates/header.php' ?>
 
 <div class="container mt-5">
-  <h1 class="mb-4">Reports Overview</h1>
+  <h1 class="mb-4">Admin Reports Overview</h1>
 
   <div class="row mb-4">
-    <div class="col-md-4">
-      <div class="card text-white bg-primary mb-3">
+    <div class="col-md-6">
+      <div class="card mb-3 border-success" style="padding-bottom: 15px;">
+        <div class="card-header bg-success text-white">
+          <h5 class="mb-0">Total Reminders</h5>
+        </div>
+        <div class="card-body">
+          <p class="display-6">123</p>
+          <div class="row text-center">
+            <div class="col-md-6">
+              <div class="p-3 border rounded bg-light">
+                <h6 class="text-success">Completed</h6>
+                <p class="fw-bold mb-0">87</p>
+              </div>
+            </div>
+            <div class="col-md-6 center">
+              <div class="p-3 border rounded bg-light">
+                <h6 class="text-danger">Incomplete</h6>
+                <p class="fw-bold mb-0">36</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card text-white bg-primary mb-2">
         <div class="card-body">
           <h5 class="card-title">Total Registered Users</h5>
-          <?php if (!empty($data["total_users"])): ?>
-            <p class="card-text display-6"><?php echo $data["total_users"]; ?></p>
+          <?php if (!empty($data['total_users'])): ?>
+            <p class="card-text display-6"><?php echo htmlspecialchars($data['total_users']); ?></p>
+          <?php else: ?>
+            <p class="card-text display-6">Unknown</p>
           <?php endif; ?>
         </div>
       </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card text-white bg-success mb-3">
-        <div class="card-body">
-          <h5 class="card-title">Total Reminders</h5>
-          <p class="card-text display-6">123</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card text-white bg-dark mb-3">
+      <div class="card text-white bg-dark">
         <div class="card-body">
           <h5 class="card-title">Total Logs</h5>
-          <p class="card-text display-6">678</p>
+          <?php if (!empty($data['total_logs'])): ?>
+            <p class="card-text display-6"><?php echo htmlspecialchars($data['total_logs']); ?></p>
+          <?php else: ?>
+            <p class="card-text display-6">Unknown</p>
+          <?php endif; ?>
         </div>
       </div>
     </div>
