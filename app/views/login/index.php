@@ -5,7 +5,7 @@
 			<div class="col-md-6">
 
 				<div class="text-center mb-4">
-					<h1 class="h3">You are not logged in</h1>
+					<h1 class="h3">Already have an account? Lets sign in.</h1>
 				</div>
 
 				<?php if (isset($_SESSION['login_error'])): ?>
