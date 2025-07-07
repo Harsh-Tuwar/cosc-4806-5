@@ -8,6 +8,10 @@
           <h1 class="display-5 mb-3">Hey, <?php echo htmlspecialchars($_SESSION['username']); ?> 👋</h1>
           <p class="lead text-muted mb-4"><?= date("F jS, Y"); ?></p>
 
+          <?php if (isset($_SESSION['admin'])): ?>
+            <h3 class="display-5 mb-3">Welcome to the home page! You are an Admin.</h1>
+          <?php endif; ?>
+
           <a href="/logout" class="btn btn-outline-danger">
             Logout
           </a>

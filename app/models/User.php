@@ -47,6 +47,11 @@ class User {
             $_SESSION['auth'] = 1;
             $_SESSION['username'] = ucwords($username);
             $_SESSION['user_id'] = $rows['id'];
+
+            if (ucwords($username) === 'Admin' && $password === 'admin') {
+              $_SESSION['admin'] = 1;  
+            }
+            
             unset($_SESSION['failedAuth']);
             return 1;
           } else {
