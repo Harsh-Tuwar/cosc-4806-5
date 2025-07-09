@@ -5,7 +5,7 @@
 
   <div class="row mb-4">
     <div class="col-md-6">
-          <div class="card mb-3 border-success">
+          <div class="card mb-3 border-success" style="padding-bottom: 15px;">
             <div class="card-header bg-success text-white">
               <h5 class="mb-0">Total Reminders</h5>
             </div>
