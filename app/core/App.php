@@ -18,7 +18,7 @@ class App {
         $url = $this->parseUrl();
 
         // only render reports page if admin is logged in
-        if (!isset($_SESSION['admin']) && $url[1] == 'reports') {
+        if (isset($_SESSION['auth']) == 1 && !isset($_SESSION['admin']) && $url[1] == 'reports') {
             header('Location: /home');
         }
         
