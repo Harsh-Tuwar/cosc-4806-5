@@ -1,7 +1,15 @@
 <?php require_once 'app/views/templates/header.php' ?>
 
 <div class="container mt-5">
-  <h1 class="mb-4">Admin Reports Overview</h1>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/home">Home</a></li>
+      <li class="breadcrumb-item"><a href="/reports">Reports</a></li>
+      <li class="breadcrumb-item active" aria-current="page">All Logs</li>
+    </ol>
+  </nav>
+  
+  <h1 class="mb-4">All Logs</h1>
 
   <div class="table-responsive">
     <table class="table table-bordered table-hover table-striped">

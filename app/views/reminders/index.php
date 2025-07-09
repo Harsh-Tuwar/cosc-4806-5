@@ -1,6 +1,13 @@
 <?php require_once 'app/views/templates/header.php' ?>
 
 <div class="container mt-5">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/home">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Reminders</li>
+    </ol>
+  </nav>
+  
   <div class="page-header mb-4 d-flex justify-content-between align-items-center">
     <h1>Reminders</h1>
     <a href="/reminders/create" class="btn btn-primary">
