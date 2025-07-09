@@ -17,6 +17,11 @@ class App {
         // it will be /controller/method
         $url = $this->parseUrl();
 
+        // only render reports page if admin is logged in
+        if (!isset($_SESSION['admin']) && $url[1] == 'reports') {
+            header('Location: /home');
+        }
+        
         /* if controller exists in the URL, then go to it
          * if not, then go to this->controller which is defaulted to home 
          */
@@ -54,6 +59,8 @@ class App {
             }
         }
 
+
+        
         // This will rebase the params to a new array (starting at 0)
         // if params exist
         $this->params = $url ? array_values($url) : [];
