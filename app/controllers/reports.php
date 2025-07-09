@@ -30,9 +30,12 @@ class Reports extends Controller {
 
   public function reminders() {
     $reminders = $this->model('Reminder');
+
+    $reminder_totals = $reminders->getReminderTotals();
     
     $this->view('reports/reminders_overview', [
-                'reminders' => $reminders->getAllReminders()
+                'reminders' => $reminders->getAllReminders(),
+                'totals' => $reminder_totals,
     ]);
   }
 }

@@ -20,14 +20,25 @@ class Reminder {
     return $rows;
   }
 
-  public function getRemindersSummary() {
+  public function getReminderTotals() {
     $db = db_connect();
+    
     $query = $db->prepare("
-      
+      SELECT 
+          COUNT(*) AS total_reminders,
+          SUM(CASE WHEN completed = 1 THEN 1 ELSE 0 END) AS completed_reminders,
+          SUM(CASE WHEN completed = 0 THEN 1 ELSE 0 END) AS incomplete_reminders
+      FROM reminders
     ");
+    
     $query->execute();
-    $rows = $query->fetchAll(PDO::FETCH_ASSOC);
-    return $rows;
+    $rows = $query->fetch(PDO::FETCH_ASSOC);
+    
+    return [
+      'all' => (int) $rows['total_reminders'],
+      'completed' => (int) $rows['completed_reminders'],
+      'incomplete' => (int) $rows['incomplete_reminders'],
+    ];
   }
 
   public function getTotalNumberOfReminders() {

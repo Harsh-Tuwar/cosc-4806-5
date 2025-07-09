@@ -19,15 +19,15 @@
           <div class="row mt-3">
             <div class="col-md-4">
               <p class="mb-2">Total Reminders:</p>
-              <h6><strong><?= $summary['totals']['all'] ?></strong></h6>
+              <h6><strong><?= $data['totals']['all'] ?></strong></h6>
             </div>
             <div class="col-md-4">
               <p class="mb-2 text-success">Completed:</p>
-              <h6 class="text-success"><strong><?= $summary['totals']['completed'] ?></strong></h6>
+              <h6 class="text-success"><strong><?= $data['totals']['completed'] ?></strong></h6>
             </div>
             <div class="col-md-4">
               <p class="mb-2 text-danger">Incomplete:</p>
-              <h6 class="text-danger"><strong><?= $summary['totals']['incomplete'] ?></strong></h6>
+              <h6 class="text-danger"><strong><?= $data['totals']['incomplete'] ?></strong></h6>
             </div>
           </div>
         </div>
