@@ -65,19 +65,21 @@
     </div>
   </div>
 
-  <div class="row mb-5">
-    <div class="col-md-12">
-      <div class="card border-info">
-        <div class="card-body">
-          <h5 class="card-title">Login Summary</h5>
-          <p class="card-text">
-            <strong>Most Failed Logins:</strong> jane.doe@example.com (15 failed attempts)<br>
-            <strong>Most Successful Logins:</strong> admin@example.com (87 successful logins)
-          </p>
+  <?php if (!empty($data['failed_attempts']['username']) && !empty($data['successful_attempts']['username'])): ?>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <div class="card border-info">
+          <div class="card-body">
+            <h5 class="card-title">Login Summary</h5>
+            <p class="card-text">
+              <strong>Most Failed Logins:</strong> <?php echo $data['failed_attempts']['username'] ?> (<?php echo $data['failed_attempts']['attempt']  ?> failed attempts)<br>
+              <strong>Most Successful Logins:</strong> <?php echo $data['successful_attempts']['username'] ?> (<?php echo $data['successful_attempts']['attempt']  ?> successful attempts)<br>
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <?php endif; ?>
 
   <div class="row">
     <div class="col-md-4">

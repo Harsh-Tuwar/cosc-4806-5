@@ -11,6 +11,50 @@
       $rows = $query->fetch(PDO::FETCH_ASSOC);
       return $rows['count'];
     }
+
+    public function getMaxStatsOfLogin() {
+      $db = db_connect();
+      $query = $db->prepare("
+        (
+            SELECT 
+                username, 
+                COUNT(*) AS login_count,
+                'Failed' AS login_type
+            FROM access_logs
+            WHERE success_attempt = 0
+            GROUP BY username
+            ORDER BY login_count DESC
+            LIMIT 1
+        )
+        UNION ALL
+        (
+            SELECT 
+                username, 
+                COUNT(*) AS login_count,
+                'Successful' AS login_type
+            FROM access_logs
+            WHERE success_attempt = 1
+            GROUP BY username
+            ORDER BY login_count DESC
+            LIMIT 1
+        );
+      ");
+      $query->execute();
+      $results = $query->fetchAll(PDO::FETCH_ASSOC); 
+
+      $data = [
+          'bad' => [
+              'username' => $results[0]['username'] ?? null,
+              'attempt'  => $results[0]['login_count'] ?? 0
+          ],
+          'good' => [
+              'username' => $results[1]['username'] ?? null,
+              'attempt'  => $results[1]['login_count'] ?? 0
+          ]
+      ];
+
+      return $data;
+    }
     
     public function logAccess($username, $success) {
       $db = db_connect();

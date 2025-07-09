@@ -10,11 +10,15 @@ class Reports extends Controller {
     $total_users = $users->getNumberOfUsers();
     $total_reminders = $reminders->getTotalNumberOfReminders();
     $total_logs = $logs->getTotalNumberOfLogs();
+
+    $max_stats = $logs->getMaxStatsOfLogin();
     
     $this->view('reports/index', [
                 'total_users' => $total_users, 
                 'total_reminders' => $total_reminders, 
-                'total_logs' => $total_logs
+                'total_logs' => $total_logs,
+                'failed_attempts' => $max_stats['bad'],
+                'successful_attempts' => $max_stats['good'],
     ]);
   }  
 }
