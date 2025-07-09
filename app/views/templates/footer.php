@@ -1,11 +1,25 @@
-<footer class="footer mt-auto py-3 bg-light border-top">
-  <div class="container text-center">
-    <span class="text-muted">&copy; <?php echo date('Y'); ?> COSC4806. All rights reserved.</span>
+<footer class="footer mt-auto py-4 bg-light border-top shadow-sm">
+  <div class="container">
+    <div class="row align-items-center text-center text-md-start">
+
+      <div class="col-md-6 mb-3 mb-md-0">
+        <p class="mb-1 fw-bold">COSC4806 Dashboard</p>
+        <span class="text-muted small">&copy; <?= date('Y') ?> COSC4806. All rights reserved.</span>
+      </div>
+
+      <div class="col-md-6 text-md-end">
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item"><a class="text-decoration-none text-muted" href="#">About</a></li>
+          <li class="list-inline-item"><a class="text-decoration-none text-muted" href="#">Contact</a></li>
+          <li class="list-inline-item"><a class="text-decoration-none text-muted" href="#">Privacy</a></li>
+          <li class="list-inline-item">
+            <a class="text-decoration-none text-muted" href="https://github.com/" target="_blank" title="GitHub">
+              <i class="bi bi-github"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
   </div>
 </footer>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</body>
-</html>

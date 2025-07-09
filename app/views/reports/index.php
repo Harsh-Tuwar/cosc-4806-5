@@ -100,13 +100,10 @@
   </div>
   
   <div class="row">
-    <div class="col-md-4">
-      <a href="/users" class="btn btn-outline-primary w-100">Go to Users Table</a>
-    </div>
-    <div class="col-md-4">
+    <div class="col-md-6 mt-3 mt-md-0 mb-3">
       <a href="/reports/reminders" class="btn btn-outline-success w-100">View All Reminders</a>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6 mt-3 mt-md-0 mb-3">
       <a href="/reports/all_logs" class="btn btn-outline-secondary w-100">View All Logs</a>
     </div>
   </div>
