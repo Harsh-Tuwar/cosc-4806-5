@@ -27,6 +27,14 @@ class Reports extends Controller {
                 'logs' => $this->model('AccessLog')->getAllLogs()
     ]);
   }
+
+  public function reminders() {
+    $reminders = $this->model('Reminder');
+    
+    $this->view('reports/reminders_overview', [
+                'reminders' => $reminders->getAllReminders()
+    ]);
+  }
 }
 
 ?>

@@ -93,7 +93,7 @@
       <a href="/users" class="btn btn-outline-primary w-100">Go to Users Table</a>
     </div>
     <div class="col-md-4">
-      <a href="/reminders" class="btn btn-outline-success w-100">View All Reminders</a>
+      <a href="/reports/reminders" class="btn btn-outline-success w-100">View All Reminders</a>
     </div>
     <div class="col-md-4">
       <a href="/reports/all_logs" class="btn btn-outline-secondary w-100">View All Logs</a>

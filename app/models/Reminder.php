@@ -12,6 +12,24 @@ class Reminder {
     return $rows;
   }
 
+  public function getAllReminders() {
+    $db = db_connect();
+    $query = $db->prepare("SELECT r.id as reminder_id, r.subject, r.createdAt, r.completedAt, r.deletedAt, r.completed, r.deleted, u.username FROM reminders r join users u where u.id = r.userId;");
+    $query->execute();
+    $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $rows;
+  }
+
+  public function getRemindersSummary() {
+    $db = db_connect();
+    $query = $db->prepare("
+      
+    ");
+    $query->execute();
+    $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $rows;
+  }
+
   public function getTotalNumberOfReminders() {
     $db = db_connect();
     $query = $db->prepare("
