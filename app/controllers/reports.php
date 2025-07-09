@@ -20,7 +20,13 @@ class Reports extends Controller {
                 'failed_attempts' => $max_stats['bad'],
                 'successful_attempts' => $max_stats['good'],
     ]);
-  }  
+  }
+
+  public function all_logs() {
+    $this->view('reports/all_logs', [
+                'logs' => $this->model('AccessLog')->getAllLogs()
+    ]);
+  }
 }
 
 ?>

@@ -89,7 +89,7 @@
       <a href="/reminders" class="btn btn-outline-success w-100">View All Reminders</a>
     </div>
     <div class="col-md-4">
-      <a href="/logs" class="btn btn-outline-secondary w-100">View All Logs</a>
+      <a href="/reports/all_logs" class="btn btn-outline-secondary w-100">View All Logs</a>
     </div>
   </div>
 </div>

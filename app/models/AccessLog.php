@@ -86,4 +86,12 @@
 
       return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function getAllLogs() {
+        $db = db_connect();
+        $query = $db->prepare("SELECT * FROM access_logs ORDER BY timestamp DESC;");
+        $query->execute();
+        $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
   }  
