@@ -87,7 +87,18 @@
       </div>
     </div>
   <?php endif; ?>
-
+  
+  <div class="row mb-5">
+    <div class="col-md-12">
+      <div class="card border-primary">
+        <div class="card-body">
+          <h5 class="card-title">Login Attempts by User</h5>
+          <canvas id="loginAttemptsChart" height="100"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <div class="row">
     <div class="col-md-4">
       <a href="/users" class="btn btn-outline-primary w-100">Go to Users Table</a>
@@ -100,5 +111,40 @@
     </div>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('loginAttemptsChart').getContext('2d');
+
+  const loginChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: <?= json_encode($data['chart_data']['labels']) ?>,
+      datasets: [{
+        label: 'Login Attempts',
+        data: <?= json_encode($data['chart_data']['counts']) ?>,
+        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { enabled: true }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            precision: 0
+          }
+        }
+      }
+    }
+  });
+</script>
+
 
 <?php require_once 'app/views/templates/footer.php' ?>

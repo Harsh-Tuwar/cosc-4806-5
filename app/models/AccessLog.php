@@ -94,4 +94,18 @@
         $rows = $query->fetchAll(PDO::FETCH_ASSOC);
         return $rows;
     }
-  }  
+
+    public function getLoginAttemptsByUser() {
+        $db = db_connect();
+        $query = $db->prepare("
+            SELECT username, COUNT(*) as attempts
+            FROM access_logs
+            WHERE success_attempt = 1
+            GROUP BY username
+            ORDER BY attempts DESC;
+        ");
+        $query->execute();
+        $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
+    }
+}  
