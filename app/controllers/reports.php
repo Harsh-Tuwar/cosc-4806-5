@@ -32,10 +32,12 @@ class Reports extends Controller {
     $reminders = $this->model('Reminder');
 
     $reminder_totals = $reminders->getReminderTotals();
+    $summary = $reminders->getReminderTopsSummary();
     
     $this->view('reports/reminders_overview', [
                 'reminders' => $reminders->getAllReminders(),
                 'totals' => $reminder_totals,
+                'summary' => $summary,
     ]);
   }
 }

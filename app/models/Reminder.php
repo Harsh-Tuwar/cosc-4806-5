@@ -41,6 +41,67 @@ class Reminder {
     ];
   }
 
+  public function getReminderTopsSummary() {
+    $db = db_connect();
+
+    $query = $db->prepare("
+      SELECT 
+        mc.username AS most_created_user,
+        mc.total AS most_created_count,
+  
+        cc.username AS most_completed_user,
+        cc.total AS most_completed_count,
+  
+        ic.username AS most_incomplete_user,
+        ic.total AS most_incomplete_count
+      FROM
+        (
+          SELECT u.username, COUNT(*) AS total
+          FROM users u
+          JOIN reminders r ON u.id = r.userId
+          GROUP BY u.id
+          ORDER BY total DESC
+          LIMIT 1
+        ) mc,
+        (
+          SELECT u.username, COUNT(*) AS total
+          FROM users u
+          JOIN reminders r ON u.id = r.userId
+          WHERE r.completed = 1
+          GROUP BY u.id
+          ORDER BY total DESC
+          LIMIT 1
+        ) cc,
+        (
+          SELECT u.username, COUNT(*) AS total
+          FROM users u
+          JOIN reminders r ON u.id = r.userId
+          WHERE r.completed = 0
+          GROUP BY u.id
+          ORDER BY total DESC
+          LIMIT 1
+        ) ic;
+    ");
+
+    $query->execute();
+    $rows = $query->fetch(PDO::FETCH_ASSOC);
+
+    return [
+      "top_created" => [
+        "username" => $rows['most_created_user'],
+        "count" => $rows['most_created_count']
+      ],
+      "top_completed" => [
+        "username" => $rows['most_completed_user'],
+        "count" => $rows['most_completed_count']
+      ],
+      "top_incomplete" => [
+        "username" => $rows['most_incomplete_user'],
+        "count" => $rows['most_incomplete_count']
+      ]
+    ];
+  }
+
   public function getTotalNumberOfReminders() {
     $db = db_connect();
     $query = $db->prepare("

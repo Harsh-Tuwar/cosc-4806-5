@@ -38,8 +38,8 @@
       <div class="card border-primary shadow-sm">
         <div class="card-body text-center">
           <h6 class="card-title mb-2">Most Reminders</h6>
-          <p class="mb-1"><strong><?= htmlspecialchars($summary['top_created']['username']) ?></strong></p>
-          <small class="text-muted"><?= $summary['top_created']['count'] ?> reminders</small>
+          <p class="mb-1"><strong><?= htmlspecialchars($data['summary']['top_created']['username']) ?></strong></p>
+          <small class="text-muted"><?= $data['summary']['top_created']['count'] ?> reminders</small>
         </div>
       </div>
     </div>
@@ -48,8 +48,8 @@
       <div class="card border-success shadow-sm">
         <div class="card-body text-center">
           <h6 class="card-title mb-2">Most Completed</h6>
-          <p class="mb-1"><strong><?= htmlspecialchars($summary['top_completed']['username']) ?></strong></p>
-          <small class="text-muted"><?= $summary['top_completed']['count'] ?> completed</small>
+          <p class="mb-1"><strong><?= htmlspecialchars($data['summary']['top_completed']['username']) ?></strong></p>
+          <small class="text-muted"><?= $data['summary']['top_completed']['count'] ?> completed</small>
         </div>
       </div>
     </div>
@@ -58,8 +58,8 @@
       <div class="card border-danger shadow-sm">
         <div class="card-body text-center">
           <h6 class="card-title mb-2">Most Incomplete</h6>
-          <p class="mb-1"><strong><?= htmlspecialchars($summary['top_incomplete']['username']) ?></strong></p>
-          <small class="text-muted"><?= $summary['top_incomplete']['count'] ?> incomplete</small>
+          <p class="mb-1"><strong><?= htmlspecialchars($data['summary']['top_incomplete']['username']) ?></strong></p>
+          <small class="text-muted"><?= $data['summary']['top_incomplete']['count'] ?> incomplete</small>
         </div>
       </div>
     </div>
